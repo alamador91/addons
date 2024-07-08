@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+openacademy.access_oa_curso,access_oa_curso,openacademy1.model_oa_curso,base.group_user,1,1,1,1

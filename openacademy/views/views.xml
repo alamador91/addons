@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="views_tree_course_default" model="ir.ui.view">
+        <field name="name">views.tree.course.default</field>
+        <field name="model">oa.course</field>
+        <!-- <field name="inherit_id" ref="product.product_template_form_view"/> -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" string="ID"/>
+                <field name="title" string="Title"/>
+                <field name="responsible" string="Responsible"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="views_search_course_search" model="ir.ui.view">
+        <field name="name">views.search.course.search</field>
+        <field name="model">oa.course</field>
+        <field name="arch" type="xml">
+            <search string="Search Course">
+                <field name="title" string="Title"/>
+                <field name="description" string="Description"/>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,83 @@
+
+<odoo>
+    <record id="cursos_list" model="ir.actions.act_window">
+        <field name="name">Cursos Listado</field>
+        <field name="res_model">oa.curso</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="oa_curso_search"/>
+        <!-- <field name="view_id" ref="customer_details_tree"/> -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Listar
+            </p>
+        </field>
+    </record>
+
+    <record id="cursos_kanban" model="ir.actions.act_window">
+        <field name="name">Cursos Kanban</field>
+        <field name="res_model">oa.curso</field>
+        <field name="view_mode">kanban</field>
+        <!-- <field name="view_id" ref="customer_details_tree"/> -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Kanbanear
+            </p>
+        </field>
+    </record>
+
+    <record id="cursos_calendar" model="ir.actions.act_window">
+        <field name="name">Cursos Calendar</field>
+        <field name="res_model">oa.curso</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="view_id" ref="oa_curso_tree"/> -->
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Calendarear
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="main_menu_cursos"
+                name="Cursos"
+                sequence="1"/>
+
+    <menuitem id="menu_cursos_1"
+             name="sm c 1"
+             parent="main_menu_cursos"
+             sequence="1"/>
+
+    <menuitem id="menu_cursos_2"
+             name="sm c 2"
+             parent="main_menu_cursos"
+             action="cursos_list"
+             sequence="2"/>
+
+    <menuitem id="menu_cursos_3"
+             name="sm c 3"
+             parent="main_menu_cursos"
+             action="cursos_calendar"
+             sequence="3"/>
+
+    <menuitem id="menu_sep_1"
+             name="Separador 1"
+             parent="menu_cursos_1"
+             sequence="0"/>
+    <menuitem id="menu_sep_2"
+             name="Separador 2"
+             parent="menu_cursos_1"
+             sequence="0"/>
+
+    <menuitem id="menu_customer_details_report1"
+             name="C1"
+             parent="menu_sep_1"
+             action="cursos_list"
+             sequence="1"/>
+    <menuitem id="menu_customer_details_report2"
+             name="C2"
+             parent="menu_sep_2"
+             action="cursos_kanban"
+             sequence="1"/>
+
+    
+</odoo>

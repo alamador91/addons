@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- <record id="test_model" model="ir.ui.view"> -->
+    <record id="test_model_action" model="ir.actions.act_window">
+        <field name="name">Tests</field>
+        <field name="res_model">re.test.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="test_model_menu"
+        name="Tests"
+        parent="main_menu"
+        action="test_model_action"
+        sequence="10"/>
+
+    <record id="test_model_view_tree" model="ir.ui.view">
+        <field name="name">test.model.view.tree</field>
+        <field name="model">re.test.model</field>
+        <field name="arch" type="xml">
+            <tree string="Test">
+                <field name="name" string="Prueba"/>
+                <field name="passed" string="Pasa"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

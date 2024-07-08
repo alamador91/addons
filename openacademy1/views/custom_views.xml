@@ -1,0 +1,23 @@
+<odoo>
+    <record model="ir.ui.view" id="oa_curso_tree">
+        <field name="name">oa.curso.tree</field>
+        <field name="model">oa.curso</field>
+        <field name="arch" type="xml">
+            <tree string="Curso Tree">
+                <field name="name" string="asd"/>
+                <field name="edition"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="oa_curso_search">
+        <field name="name">oa.curso.search</field>
+        <field name="model">oa.curso</field>
+        <field name="arch" type="xml">
+            <search string="Curso Search">
+                <field name="name" string="aaaaaaaa"/>
+                <field name="edition" string="bbbbbbbbb"/>
+            </search>
+        </field>
+    </record>
+</odoo>

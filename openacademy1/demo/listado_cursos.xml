@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record model="oa.curso" id="1">
+            <field name="name">Mat</field>
+        </record>
+        <record model="oa.curso" id="2">
+            <field name="name">Esp</field>
+        </record>
+        <record model="oa.curso" id="3">
+            <field name="name">Bio</field>
+        </record>
+        <record model="oa.curso" id="4">
+            <field name="name">Fis</field>
+        </record>
+        <record model="oa.curso" id="5">
+            <field name="name">Qui</field>
+        </record>
+    </data>
+</odoo>

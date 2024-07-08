@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="main_menu"
+        name="Open Academy module">
+        <menuitem
+            id="courses_menu"
+            name="Courses"
+            sequence="1">
+            <menuitem
+                id="courses_manage"
+                name="Manage"
+                action="action_list_course"/>
+        </menuitem>
+
+        <menuitem
+            id="sessions_menu"
+            name="Sessions"
+            sequence="2">
+            <menuitem
+                id="sessions_manage"
+                name="Manage"
+                action="action_list_session"/>
+        </menuitem>
+
+        <menuitem
+            id="c_del_menu"
+            name="Del courses"
+            sequence="2">
+            <menuitem
+                id="c_del_manage"
+                name="Manage"
+                action="action_list_c_del"/>
+        </menuitem>
+
+        <menuitem
+            id="attdee_menu"
+            name="Attendees"
+            sequence="3">
+            <menuitem
+                id="attdee_manage"
+                name="Manage"
+                action="action_list_attdee"/>
+        </menuitem>
+    </menuitem>
+</odoo>

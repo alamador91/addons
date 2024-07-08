@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="1" model="oa.course">
+        <field name="title">Math</field>
+        <field name="description">Course 1 description</field>
+    </record>
+    <record id="2" model="oa.course">
+        <field name="title">English</field>
+        <field name="description">As native language</field>
+    </record>
+    <record id="3" model="oa.course">
+        <field name="title">History</field>
+    </record>
+</odoo>

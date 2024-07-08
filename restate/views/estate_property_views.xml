@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="view_estate_property_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Estate Properties" default_order="expected_price desc">
+                <field name="name" string="Property Name"/>
+                <field name="expected_price" widget="monetary" options="{'currency_field': 'currency_id'}" string="Price"/>
+                <field name="postcode" string="Zip Code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="test_model_action" model="ir.actions.act_window">
+        <field name="name">Test action</field>
+        <field name="res_model">test.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="estate_property_model_action" model="ir.actions.act_window">
+        <field name="name">Estate property action</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="main_menu_estate" 
+            name="Estates"
+            sequence="1"/>
+
+    <menuitem id="estate_entity_list"
+             name="Entities"
+             parent="main_menu_estate"
+             sequence="1"/>
+
+    <menuitem id="estate_list"
+             name="Estate"
+             parent="estate_entity_list"
+             action="estate_property_model_action"
+             sequence="1"/>
+    <menuitem id="test_list"
+             name="Test"
+             parent="estate_entity_list"
+             action="test_model_action"
+             sequence="1"/>
+</odoo>
