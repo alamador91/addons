@@ -13,6 +13,8 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability" string="Available From"/>
+                <field name="property_type_id"/>
+                <field name="property_tag_ids" widget="many2many_tags"></field>
             </tree>
         </field>
     </record>
@@ -24,10 +26,6 @@
     </record>
 
     <menuitem
-        id="estate_property_menu"
-        name="Estate Properties"
-        parent="main_menu"/>
-    <menuitem
         id="estate_property_menu_manage"
         name="Manage"
         parent="estate_property_menu"
@@ -38,17 +36,24 @@
         <field name="model">re.estate.property</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button string="Sold" name="action_sale" type="object"/>
+                    <button string="Cancel" name="action_cancel" type="object"/>
+                </header>
                 <sheet>
                     <h1>
                         <field name="name"/>
                     </h1>
+                    <field name="property_tag_ids" widget="many2many_tags"></field>
                     <group>
                         <group>
+                            <field name="property_type_id"/>
                             <field name="postcode"/>
                             <field name="date_availability"/>
                         </group>
                         <group>
                             <field name="expected_price"/>
+                            <field name="best_offer"/>
                             <field name="selling_price"/>
                         </group>
                         <notebook>
@@ -62,6 +67,19 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
+                                    <field name="total_area"/>
+                                </group>
+                                <group name="name">
+                                    <field name="state"/>
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids"></field>
+                            </page>
+                            <page string="Other Info">
+                                <group name="other">
+                                    <field name="seller_id"/>
+                                    <field name="buyer_id"/>
                                 </group>
                             </page>
                         </notebook>
@@ -82,8 +100,13 @@
                 <field name="bedrooms"/>
                 <field name="living_area" string="Living Area (sqm)"/>
                 <field name="facades"/>
+                <field name="property_type_id"/>
                 <separator/>
-                <filter name="garden" string="garden" domain="[('garden', '=', 'True')]" context="{'group_by': 'garden'}" />
+                <filter name="garden" string="With garden" domain="[('garden', '=', 'True')]" />
+                <filter name="available" string="Available" domain="['|', ('state', '=', 'new'), ('state', '=', 'o_received')]" />
+                <filter name="garden" string="With garden 10+" domain="[('garden', '=', 'True'), ('garden_area', '>', '10')]" />
+                <filter name="garden" string="Has garden" context="{'group_by': 'garden'}" />
+                <filter name="postcode" string="Postcode" context="{'group_by': 'postcode'}" />
             </search>
         </field>
     </record>

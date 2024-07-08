@@ -3,4 +3,14 @@
         id="main_menu"
         name="Real Estate"
         sequence="10"/>
+
+        <menuitem
+        id="estate_property_menu"
+        name="Estate Properties"
+        parent="main_menu"/>
+
+        <menuitem
+        id="settings_menu"
+        name="Settings"
+        parent="main_menu"/>
 </odoo>
