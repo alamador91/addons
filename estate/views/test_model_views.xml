@@ -24,4 +24,21 @@
             </tree>
         </field>
     </record>
+
+    <record id="test_model_line_view_form" model="ir.ui.view">
+        <field name="name">re.test.model.line.view.form</field>
+        <field name="model">re.test.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="name"/>
+                <field name="passed"/>
+                <field name="line_ids">
+                    <tree>
+                        <field name="f1"/>
+                        <field name="f2"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
 </odoo>

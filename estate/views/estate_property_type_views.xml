@@ -18,9 +18,29 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(estate.estate_property_offer_action)d" type="action" class="oe_stat_button" icon="fa-money">
+                            <field name="offer_count" widget="statinfo" string="Offers"/>
+                        </button>
+                    <!-- This is another solution using a method call -->
+                    <!-- <button name="action_view_offers" type="object" class="oe_stat_button" icon="fa-money">
+                        <field name="offer_count" widget="statinfo" string="Offers"/>
+                    </button> -->
+                </div>
                     <h1>
                         <field name="name"></field>
                     </h1>
+                    <notebook>
+                        <page name="name" string="Properties">
+                            <field name="property_ids">
+                                <tree default_order="expected_price DESC">
+                                    <field name="name" string="Title"/>
+                                    <field name="expected_price"/>
+                                    <field name="state" string="Status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -30,9 +50,11 @@
         <field name="name">re.estate.property.type.view.tree</field>
         <field name="model">re.estate.property.type</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree multi_edit="1">
+                <field name="sequence" widget="handle"></field>
                 <field name="id"></field>
                 <field name="name"></field>
+                <field name="offer_count" invisible="1"></field>
             </tree>
         </field>
     </record>
