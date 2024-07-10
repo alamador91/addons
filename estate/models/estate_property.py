@@ -1,5 +1,6 @@
 from odoo import api, exceptions, fields, models
 from odoo.fields import Date as d
+from odoo.exceptions import UserError
 from dateutil.relativedelta import relativedelta
 
 class EstateProperty(models.Model):
@@ -33,7 +34,7 @@ class EstateProperty(models.Model):
         copy=False,
         selection=[("new", "New"), ("o_received", "Offer Received"), ("o_accepted", "Offer Accepted"), ("sold", "Sold"), ("cancelled", "Canceled")],
         default="new",
-        compute="_compute_state",
+        #compute="_compute_state",
         store=True,
     )
 
@@ -55,11 +56,11 @@ class EstateProperty(models.Model):
         #("positive_garden_area", "CHECK(garden_area >= 0)", "The garden area must be positive"),
     ]
 
-    @api.depends('offer_ids')
-    def _compute_state(self):
-        for record in self:
-            if len(record.offer_ids) != 0 and record.state == "new":
-                record.state = "o_received"
+    #@api.depends('offer_ids')
+    #def _compute_state(self):
+    #    for record in self:
+    #        if len(record.offer_ids) != 0 and record.state == "new":
+    #            record.state = "o_received"
 
     @api.depends('garden_area', 'living_area')
     def _compute_total_area(self):
@@ -92,18 +93,7 @@ class EstateProperty(models.Model):
             self.garden_area = None
             self.garden_orientation = None
 
-    def action_sale(self):
-        self.ensure_one()
-        if self.state == "cancelled":
-            raise exceptions.UserError('U cant sell a cancelled property')
-        self.state = "sold"
 
-
-    def action_cancel(self):
-        self.ensure_one()
-        if self.state == "sold":
-            raise exceptions.UserError('U cant cancel a sold property')
-        self.state = "cancelled"
 
     #@api.constrains('offer_ids')
     #def _check_90_percent(self):
@@ -121,3 +111,21 @@ class EstateProperty(models.Model):
                 return
             if record.selling_price < record.expected_price * 0.9:
                 raise exceptions.ValidationError('The selling price is less than 90% of the expected price')
+
+    def action_sale(self):
+        self.ensure_one()
+        if self.state == "cancelled":
+            raise exceptions.UserError('U cant sell a cancelled property')
+        self.state = "sold"
+
+
+    def action_cancel(self):
+        self.ensure_one()
+        if self.state == "sold":
+            raise exceptions.UserError('U cant cancel a sold property')
+        self.state = "cancelled"
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_not_used(self):
+        if self.state not in ['new', 'cancelled']:
+            raise UserError("Cant delete")

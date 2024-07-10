@@ -57,3 +57,8 @@ class EstatePropertyOffer(models.Model):
             self.property_id.selling_price = 0
             self.property_id.state = "o_received"
         self.status = "refused"
+
+    @api.model
+    def create(self, vals):
+        self.env['re.estate.property'].browse(vals['property_id']).state = "o_received"
+        return super().create(vals)

@@ -5,3 +5,4 @@ access_est_p,access_est_p,estate.model_re_estate_property,base.group_user,1,1,1,
 access_p_type,access_p_type,estate.model_re_estate_property_type,base.group_user,1,1,1,1
 access_p_tag,access_p_tag,model_re_estate_property_tag,,1,1,1,1
 access_p_offer,access_p_offer,model_re_estate_property_offer,base.group_user,1,1,1,1
+access_user,access_user,model_res_users,base.group_user,1,1,1,1
