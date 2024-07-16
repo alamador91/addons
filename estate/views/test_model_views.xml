@@ -31,7 +31,7 @@
         <field name="arch" type="xml">
             <form>
                 <field name="name"/>
-                <field name="passed"/>
+                <field name="passed" widget="boolean_toggle"/>
                 <field name="line_ids">
                     <tree>
                         <field name="f1"/>

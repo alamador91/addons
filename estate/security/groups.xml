@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_module_real_estate" model="ir.module.category">
+        <field name="name">Real Estate</field>
+    </record>
+
+
+    <record id="res_groups_real_estate_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="ir_module_real_estate"></field>
+        <field name="comment">
+            Group for users
+        </field>
+    </record>
+
+    <record id="res_groups_real_estate_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="ir_module_real_estate"></field>
+        <field name="implied_ids" eval="[(4, ref('res_groups_real_estate_user'))]"></field>
+        <field name="comment">
+            This user is a manager
+        </field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]"></field>
+    </record>
+
+
+    <record id="re_estate_property_personal_rule_t" model="ir.rule">
+        <field name="name">Personal Issues T</field>
+        <field name="model_id" ref="model_re_test_model"></field>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('res_groups_real_estate_user'))]"></field>
+    </record>
+
+    <record id="re_estate_property_personal_rule_f" model="ir.rule">
+        <field name="name">Personal Issues F</field>
+        <field name="model_id" ref="model_re_test_model_line"></field>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('res_groups_real_estate_user'))]"></field>
+    </record>
+
+    <record id="re_estate_property_personal_rule_t_all" model="ir.rule">
+        <field name="name">All Issues</field>
+        <field name="model_id" ref="model_re_test_model"></field>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('res_groups_real_estate_manager'))]"></field>
+    </record>
+</odoo>

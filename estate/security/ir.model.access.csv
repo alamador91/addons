@@ -1,6 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_tests,access_test,estate.model_re_test_model,base.group_user,1,1,1,1
-access_tests_line,access_test_line,estate.model_re_test_model_line,base.group_user,1,1,1,1
+access_tests_user,access_test_user,estate.model_re_test_model,res_groups_real_estate_user,1,1,1,0
+access_tests_mngr,access_test_mngr,estate.model_re_test_model,res_groups_real_estate_manager,1,1,1,1
+access_tests_line_u,access_test_line_u,estate.model_re_test_model_line,res_groups_real_estate_user,1,1,1,0
+access_tests_line_m,access_test_line_m,estate.model_re_test_model_line,res_groups_real_estate_manager,1,1,1,1
 access_est_p,access_est_p,estate.model_re_estate_property,base.group_user,1,1,1,1
 access_p_type,access_p_type,estate.model_re_estate_property_type,base.group_user,1,1,1,1
 access_p_tag,access_p_tag,model_re_estate_property_tag,,1,1,1,1

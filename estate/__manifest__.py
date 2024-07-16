@@ -13,6 +13,7 @@
         'base',
     ],
     'data': [
+        'security/groups.xml',
         'security/ir.model.access.csv',
 
         #'data/crm_lead_prediction_data.xml',
